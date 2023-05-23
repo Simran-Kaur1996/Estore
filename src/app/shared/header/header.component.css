@@ -1,0 +1,45 @@
+.mat-toolbar {
+  background-color: black;
+  color: #ffffff;
+  height: 64px;
+}
+
+.mat-toolbar-row {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+mat-icon {
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+h2 {
+  margin: 0;
+  cursor: pointer;
+}
+
+.toolbar_right_icon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar_right_icon a {
+  margin-right: 16px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.toolbar_logout_icon {
+  cursor: pointer;
+  margin-left: 14px;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+}
+
+.mat-icon-button {
+  font-size: 15px;
+}

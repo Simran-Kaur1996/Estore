@@ -1,0 +1,23 @@
+<div class="sidebar">
+  <mat-drawer-container class="sidebar__container">
+    <mat-drawer
+      #drawer
+      mode="side"
+      class="custom-sidebar"
+      [opened]="openCloseToggleStatus"
+    >
+      <button
+        (click)="toggleSidebar()"
+        mat-icon-button
+        color="primary"
+        class="close-button"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <h2>EStore</h2>
+      <div *ngFor="let category of categories">
+        <app-category [category]="category"></app-category>
+      </div>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

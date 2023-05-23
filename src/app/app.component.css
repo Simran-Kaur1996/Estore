@@ -1,0 +1,21 @@
+.app__container {
+  height: 100%;
+}
+.app__body {
+  display: flex;
+  height: 100%;
+}
+.app__body__left {
+  top: 0;
+  height: 100%;
+  position: absolute;
+  background: #e0e1e0;
+}
+.centered-content {
+  text-align: center; /* Centers text within the div */
+}
+.app__body__right {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}

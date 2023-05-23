@@ -1,0 +1,19 @@
+<div
+  class="product-container"
+  onclick="alert('click')"
+  style="margin-left: 250px"
+>
+  <mat-card *ngFor="let product of products" class="product-card">
+    <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}" />
+    <div class="product-container__body">
+      <mat-card-content>
+        <!-- <h2>{{ product.name }}</h2> -->
+        <p>{{ product.description }}</p>
+      </mat-card-content>
+      <mat-card-actions class="product-container__action">
+        <!-- <button mat-button>Buy Now</button> -->
+        <p>{{ 33.45 }}</p>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>

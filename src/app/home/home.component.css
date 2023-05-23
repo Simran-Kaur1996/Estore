@@ -1,0 +1,22 @@
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  cursor: pointer;
+}
+
+.product-card {
+  width: 300px;
+  margin: 10px;
+}
+
+button {
+  background-color: rgb(0, 0, 0) !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 15px;
+}
+.product-container__action {
+  display: flex;
+  justify-content: start;
+}

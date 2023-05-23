@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon (click)="toggleSidebar()">menu</mat-icon>
+
+    <h2 routerLink="home">EStore</h2>
+    <div class="toolbar_right_icon">
+      <a routerLink="login">Login</a>
+      <a routerLink="registration">Registration</a>
+      <mat-icon [matMenuTriggerFor]="menu">account_circle</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+
+      <mat-icon
+        matBadge="3"
+        matBadgeSize="small"
+        matBadgeColor="warn"
+        matBadgePosition="above after"
+        >shopping_cart</mat-icon
+      >
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

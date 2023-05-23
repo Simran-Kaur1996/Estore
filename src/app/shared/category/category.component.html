@@ -1,0 +1,21 @@
+<div class="category">
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-label>{{ category.name }}</mat-label>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let subtask of category.subCategory">
+        <mat-checkbox
+          [color]="subtask.color"
+          (ngModelChange)="updateAllComplete()"
+        >
+          {{ subtask.name }}
+        </mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
