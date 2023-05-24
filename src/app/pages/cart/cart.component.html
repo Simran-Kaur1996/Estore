@@ -1,1 +1,26 @@
-<p>cart works!</p>
+<mat-card class="cart-container">
+  <h2>Cart</h2>
+  <div class="cart-items">
+    <!-- <mat-card *ngFor="let item of cartItems" class="cart-item">
+      <img mat-card-image src="{{ item.imageUrl }}" alt="{{ item.name }}" />
+      <mat-card-content>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p>Price: ${{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+      </mat-card-content>
+    </mat-card> -->
+  </div>
+  <mat-card class="cart-summary">
+    <mat-card-content>
+      <h3>Summary</h3>
+      <p>Total Items:{{ countProduct$ | async }}</p>
+      <p>Total Price: {{ totalPrice$ | async | number : "1.2-2" }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" class="checkout-button">
+        Checkout
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card>

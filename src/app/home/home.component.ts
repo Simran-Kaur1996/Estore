@@ -8,12 +8,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  // opened = false;
-  // title = 'frontend';
-  // data: string | undefined;
-  // receiveData(data: any) {
-  //   this.data = data;
-  // }
   products: any;
 
   ngOnInit() {
