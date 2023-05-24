@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { clearCart } from '../../cart-state-store/cart.actions';
-import { addProduct, removeProduct } from '../../cart-state-store/cart.actions';
+import { clearCart } from '../../app-state/actions/cart.actions';
+import {
+  addProduct,
+  removeProduct,
+} from '../../app-state/actions/cart.actions';
 import {
   ProductGroup,
   selectGroupedCartEntries,

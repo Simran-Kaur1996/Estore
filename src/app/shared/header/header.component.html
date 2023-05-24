@@ -6,20 +6,20 @@
     <div class="toolbar_right_icon">
       <a routerLink="login">Login</a>
       <a routerLink="registration">Registration</a>
-      <mat-icon [matMenuTriggerFor]="menu">account_circle</mat-icon>
+      <mat-icon [matMenuTriggerFor]="menu">account_circle </mat-icon>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Logout</button>
       </mat-menu>
-
-      <mat-icon
-        matBadge="3"
-        matBadgeSize="small"
-        matBadgeColor="warn"
-        matBadgePosition="above after"
-        routerLink="cart"
-        >shopping_cart</mat-icon
-      >
+      <div *ngIf="cartProducts | async as cartItems">
+        <mat-icon
+          matBadge="{{ cartItems.length }}"
+          matBadgeSize="medium"
+          [matBadgeColor]="'accent'"
+          routerLink="cart"
+          >shopping_cart</mat-icon
+        >
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

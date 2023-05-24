@@ -4,7 +4,7 @@ import { ProductService } from '../../services/ProductService';
 import { productsData } from '../../db/products';
 import { Store } from '@ngrx/store';
 import { Product } from 'src/app/entity/product';
-import { addProduct } from 'src/app/cart-state-store/cart.actions';
+import { addProduct } from 'src/app/app-state/actions/cart.actions';
 
 @Component({
   selector: 'app-product',

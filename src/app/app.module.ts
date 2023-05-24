@@ -29,7 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductComponent } from './pages/product/product.component';
-import { cartReducer } from './cart-state-store/cart.reducer';
+import { cartReducer } from './app-state/reducers/cart.reducer';
 import { StoreModule } from '@ngrx/store';
 
 @NgModule({
@@ -63,7 +63,7 @@ import { StoreModule } from '@ngrx/store';
     MatExpansionModule,
     MatMenuModule,
     MatBadgeModule,
-    StoreModule.forRoot({ cartEntries: cartReducer }),
+    StoreModule.forRoot({ cart: cartReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
