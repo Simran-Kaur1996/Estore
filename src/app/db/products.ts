@@ -15,4 +15,76 @@ export const productsData = [
       'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
     price: 56,
   },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    description: 'This is product 2.',
+    imageUrl:
+      'https://images.footlocker.com/is/image/EBFL2/28321661_a1?wid=520&hei=520&fmt=png-alpha',
+    price: 56,
+  },
 ];

@@ -16,35 +16,44 @@ export class HeaderComponent {
 
   // cartProducts: Product[] | undefined;
   opened = false;
-  cartObservable: Observable<Product[] | undefined>;
-  cartProducts: Observable<Product[] | undefined> | undefined;
-
-  // constructor(private store: Store<TCartItemsState>) {
-  //   this.cartProducts = this.store.select((state) => state.cartItems);
-  // }
+  cartObservable: any;
+  cartProducts: Observable<TCartItemsState>;
+  cartItems: any;
+  cartCount: number = 0;
 
   constructor(private store: Store<{ cart: TCartItemsState }>) {
-    this.cartObservable = this.store.select((state) => state.cart.cartItems);
+    this.cartProducts = store.pipe(select('cart'));
   }
 
   ngOnInit() {
-    this.cartObservable.subscribe((cartItems) => {
+    this.cartObservable = this.cartProducts.subscribe(({ cartItems }) => {
       // Handle the updated cart items here
       console.log('Updated cart items:', cartItems);
-      // this.cartProducts = cartItems;
-      // console.log(this.cartProducts);
-      this.cartProducts = cartItems ? of(cartItems) : undefined;
+
+      // Update cartCount or any other logic based on cartItems
+      // this.cartCount = cartItems?.length ?? 0;
+      // this.cartProducts = of(items);
+      this.cartItems = cartItems;
+      this.calculateCartCount(cartItems);
     });
-    // this.cartProducts = this.store.select((state) => state.cart.cartItems);
   }
 
-  //store.select('feedsReducer').subscribe((data: AppState) => this.state = data );
+  calculateCartCount(cartProducts: any) {
+    this.cartCount = 0;
+    console.log(cartProducts);
+    if (cartProducts) {
+      cartProducts.forEach((item: Product) => {
+        // Perform actions on each item in cartProducts
+        console.log(item); // Example: Log each item to the console
+        this.cartCount += item.quantity;
+      });
+    }
+  }
 
-  // ngOnInit() {
-  //   this.store.pipe(select((state) => state.cartItems)).subscribe((items) => {
-  //     this.cartProducts = items;
-  //   });
-  // }
+  ngOnDestroy() {
+    // Unsubscribe from the cartObservable to avoid memory leaks
+    this.cartObservable.unsubscribe();
+  }
 
   toggleSidebar() {
     this.toggleStatus.emit('true');

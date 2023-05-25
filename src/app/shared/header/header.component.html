@@ -11,9 +11,9 @@
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Logout</button>
       </mat-menu>
-      <div *ngIf="cartProducts | async as cartItems">
+      <div>
         <mat-icon
-          matBadge="{{ cartItems.length }}"
+          matBadge="{{ cartCount }}"
           matBadgeSize="medium"
           [matBadgeColor]="'accent'"
           routerLink="cart"

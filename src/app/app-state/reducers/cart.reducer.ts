@@ -1,5 +1,5 @@
 import { Product } from '../../entity/product';
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { addProduct, clearCart, removeProduct } from '../actions/cart.actions';
 
 export type TCartItemsState = {
@@ -10,7 +10,7 @@ export const intialCartEntries: TCartItemsState = {
   cartItems: [],
 };
 
-export const cartReducer = createReducer(
+const cartItemsReducer = createReducer(
   intialCartEntries,
   on(clearCart, (state: TCartItemsState) => ({
     ...state,
@@ -25,3 +25,10 @@ export const cartReducer = createReducer(
     cartItems: state.cartItems.filter((item) => item.id !== id),
   }))
 );
+
+export function cartReducer(
+  state: TCartItemsState | undefined,
+  action: Action
+) {
+  return cartItemsReducer(state, action);
+}

@@ -6,6 +6,19 @@
     <h2>{{ product?.name }}</h2>
     <p>{{ product?.description }}</p>
     <p>{{ product?.price }}</p>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>QUANTITY</mat-label>
+        <input
+          matInput
+          placeholder="Quantity"
+          value="1"
+          type="number"
+          (keyup)="updateQuantity($event)"
+        />
+      </mat-form-field>
+    </form>
     <button class="add-to-cart-button" (click)="addToCart(product)">
       Add to Cart
     </button>
