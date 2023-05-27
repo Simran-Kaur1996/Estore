@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var lcWidthFt = document.getElementById("lc_widthFt");
+      var lcLengthFt = document.getElementById("lc_lengthFt");
+      var lcHeightFt = document.getElementById("lc_heightFt");
+
+      // foot candles
+      var footCandleSlider = document.getElementById("footCandleSlider");
+
+      // wall color pallete
+      var footCandleSlider = document.getElementById("wallcolorPallete");
+
+      // result - Room Area
+      var result_RoomArea = document.getElementById("result-RoomArea");
+      result_RoomArea.setAttribute("readonly", true);
+
+      // result - Relectance
+      var resultRoomArea = document.getElementById("result-reflectance");
+      resultRoomArea.setAttribute("readonly", true);
+
+      // calculate button
+
+      var result_luxRequirement = document.getElementById("lux-requirement");
+      var result_totalLumens = document.getElementById("total-lumens");
+      result_luxRequirement.setAttribute("disabled", "disabled");
+      result_totalLumens.setAttribute("disabled", "disabled");
+
+      function removeSpecialChars(str) {
+        var result = str.replace(/[^\w\s.]/gi, "").replace(/\s+/g, "");
+        return result;
+      }
+
+      function disabledBtn() {
+        showCalculateBtn = true;
+        cl_calculate_btn.setAttribute("disabled", "disabled");
+        cl_calculate_btn.classList.add("disabled");
+        // disabled the checkboxes
+        pcCheckbox.disabled = true;
+        pfCheckbox.disabled = true;
+        dhCheckbox.disabled = true;
+        osCheckbox.disabled = true;
+      }
+      function enabledBtn() {
+        showCalculateBtn = true;
+        cl_calculate_btn.setAttribute("disabled", "enable");
+        cl_calculate_btn.classList.remove("disabled");
+        // enabled the checkboxes
+        pcCheckbox.disabled = false;
+        pfCheckbox.disabled = false;
+        dhCheckbox.disabled = false;
+        osCheckbox.disabled = false;
+      }
+
+      // Event listener to all the input fields
+      lfInputField.addEventListener("input", (event) => {
+        if (
+          lfInputField.value &&
+          wlfInputField.value &&
+          costAvgInputField.value &&
+          avgDhInputField.value
+        ) {
+          enabledBtn();
+        } else {
+          disabledBtn();
+        }
+      });
+      wlfInputField.addEventListener("input", (event) => {
+        if (
+          lfInputField.value &&
+          wlfInputField.value &&
+          costAvgInputField.value &&
+          avgDhInputField.value
+        ) {
+          enabledBtn();
+        } else {
+          disabledBtn();
+        }
+      });
+      costAvgInputField.addEventListener("input", (event) => {
+        if (
+          lfInputField.value &&
+          wlfInputField.value &&
+          costAvgInputField.value &&
+          avgDhInputField.value
+        ) {
+          enabledBtn();
+        } else {
+          disabledBtn();
+        }
+      });
+      avgDhInputField.addEventListener("input", (event) => {
+        if (
+          lfInputField.value &&
+          wlfInputField.value &&
+          costAvgInputField.value &&
+          avgDhInputField.value
+        ) {
+          enabledBtn();
+        } else {
+          disabledBtn();
+        }
+      });
+
+      // Calculate the Total estimated savings
+      function getTotalEstimatedSavings() {
+        resultEstSaving.value = parseFloat(
+          (1 -
+            parseFloat(resultEstAnnualCostLighting.value) /
+              parseFloat(removeSpecialChars(resultEstInputField.value))) *
+            100
+        ).toFixed(2);
+      }
+      // Calculate the Estimated annual energy savings
+      function getEstimatedAnnualSavings() {
+        resultEstAnnualEnergySaving.value = parseFloat(
+          parseFloat(removeSpecialChars(resultEstInputField.value)) -
+            parseFloat(resultEstAnnualCostLighting.value)
+        ).toFixed(2);
+      }
+
+      //   Calculate the Estimated annual cost of lighting after savings
+      function EstimatedAnnualCostOfLightingAfterSaving() {
+        if (pcCheckbox.checked) {
+          //Checkbox is checked
+          resultEstAnnualCostLighting.value = parseFloat(
+            parseFloat(removeSpecialChars(resultEstInputField.value)) *
+              (1 - 0.19)
+          ).toFixed(2);
+        }
+        if (pfCheckbox.checked) {
+          resultEstAnnualCostLighting.value = parseFloat(
+            parseFloat(resultEstAnnualCostLighting.value) * (1 - 0.1)
+          ).toFixed(2);
+        }
+        if (dhCheckbox.checked) {
+          resultEstAnnualCostLighting.value = parseFloat(
+            parseFloat(resultEstAnnualCostLighting.value) * (1 - 0.22)
+          ).toFixed(2);
+        }
+        if (osCheckbox.checked) {
+          resultEstAnnualCostLighting.value = parseFloat(
+            parseFloat(resultEstAnnualCostLighting.value) * (1 - 0.21)
+          ).toFixed(2);
+        }
+        if (
+          !pcCheckbox.checked &&
+          !pfCheckbox.checked &&
+          !dhCheckbox.checked &&
+          !osCheckbox.checked
+        ) {
+          resultEstAnnualCostLighting.value = parseFloat(
+            removeSpecialChars(resultEstInputField.value)
+          ).toFixed(2);
+        }
+      }
+
+      cl_calculate_btn.addEventListener("click", function (event) {
+        event.preventDefault(); // prevent the default behavior of the Enter key (submitting the form)
+
+        // Estimated annual cost of lighting
+
+        let resultEstimatedAnnualCost =
+          (((parseFloat(lfInputField.value) *
+            parseFloat(wlfInputField.value) *
+            parseFloat(avgDhInputField.value) *
+            365) /
+            1000) *
+            parseFloat(costAvgInputField.value)) /
+          100;
+
+        resultEstInputField.value =
+          "$ " + parseFloat(resultEstimatedAnnualCost).toFixed(2);
+
+        if (resultEstAnnualCostLighting.value === "")
+          resultEstAnnualCostLighting.value = 0;
+
+        EstimatedAnnualCostOfLightingAfterSaving();
+        getTotalEstimatedSavings();
+        getEstimatedAnnualSavings();
+      });
+
+      // Add an event listener for checkboc DC Power Factor
+      pcCheckbox.addEventListener("input", function () {
+        EstimatedAnnualCostOfLightingAfterSaving();
+        getTotalEstimatedSavings();
+        getEstimatedAnnualSavings();
+      });
+
+      // Add an event listener for checkboc DC Power Conversion
+      pfCheckbox.addEventListener("input", function () {
+        EstimatedAnnualCostOfLightingAfterSaving();
+        getTotalEstimatedSavings();
+        getEstimatedAnnualSavings();
+      });
+
+      dhCheckbox.addEventListener("input", function () {
+        EstimatedAnnualCostOfLightingAfterSaving();
+        getTotalEstimatedSavings();
+        getEstimatedAnnualSavings();
+      });
+
+      // Add an event listener for checkboc DC Power Factor
+      osCheckbox.addEventListener("input", function () {
+        EstimatedAnnualCostOfLightingAfterSaving();
+        getTotalEstimatedSavings();
+        getEstimatedAnnualSavings();
+      });
+    </script>
+  </body>
+</html>
